@@ -1,1 +1,1 @@
-As part of Mobile Developers @ Berkeley's 5-week training program, I built 4 App-store deployable apps from scratch over the course of 5 weeks, and learning a lot through the process
+As part of Mobile Developers @ Berkeley's 5-week training program, I built 4 App-store deployable apps from scratch over the course of 5 weeks, learning a lot through the process
