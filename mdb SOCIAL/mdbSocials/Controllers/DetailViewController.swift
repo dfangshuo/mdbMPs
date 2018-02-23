@@ -11,6 +11,7 @@ import Firebase
 
 class DetailViewController: UIViewController {
 
+    var camethrough = false
     // layout
     var eventName: UILabel!
     var posterName: UILabel!
@@ -147,6 +148,7 @@ class DetailViewController: UIViewController {
         // add to interestedUsers
         postObjs[indice].addInterestedUser(uid: Auth.auth().currentUser!.uid, withBlock: {
             interestLvl.text = "People Interested: \(String(info.num! + 1))"
+            camethrough = true
 //            self.interestLvl.removeFromSuperview()
 //            view.addSubview(self.interestLvl)
         })
@@ -154,6 +156,13 @@ class DetailViewController: UIViewController {
     }
     
     func yesToNo() {
+        postObjs[indice].addInterestedUser(uid: Auth.auth().currentUser!.uid, withBlock: {
+            if camethrough == true {
+                interestLvl.text = "People Interested: \(String(info.num!))"
+            } else {
+                interestLvl.text = "People Interested: \(String(info.num! + 1))"
+            }
+        
 //        postObjs[indice].interestedUsers = postObjs[indice].interestedUsers.filter{$0 != "\(Auth.auth().currentUser!.uid)"}
 //        let ref = Database.database().reference().child("Posts")
 //        let childUpdates = ["\(Auth.auth().currentUser!.uid)/num":postObjs[indice].num!-1]
@@ -161,8 +170,8 @@ class DetailViewController: UIViewController {
 //        interestLvl.text = "People Interested: \(String(info.num! - 1))"
 
         
+    })
     }
-    
 
     /*
     // MARK: - Navigation

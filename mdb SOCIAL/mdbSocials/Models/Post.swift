@@ -75,15 +75,33 @@ class Post {
         
     }
     
-//    func rmInterestedUser(id: String) {
+    func rmInterestedUser(id: String, withBlock: ()-> ()) {
 //        //remove local array
+//        for i in 0...interestedUsers.count {
+//            if interestedUsers[i] == self.id! {
+//
+//            }
+//
+//        }
+        interestedUsers.popLast()
+        let ref = Database.database().reference().child("Posts")
+        let childUpdates = ["\(self.id!)/num": num!-1]
+        ref.updateChildValues(childUpdates)
+        withBlock()
+        
+        //        postObjs[indice].interestedUsers = postObjs[indice].interestedUsers.filter{$0 != "\(Auth.auth().currentUser!.uid)"}
+        //        let ref = Database.database().reference().child("Posts")
+        //        let childUpdates = ["\(Auth.auth().currentUser!.uid)/num":postObjs[indice].num!-1]
+        //        ref.updateChildValues(childUpdates)
+        //        interestLvl.text = "People Interested: \(String(info.num! - 1))"
+
 //        interestedUsers.append(id)
 //        
 //        // update database
 //        var ref = Database.database().reference().child("Posts")
 //        let childUpdates = ["/\(self.id)/num": num!-1]
 //        ref.updateChildValues(childUpdates)
-//    }
+    }
     
     
 //    init() {
